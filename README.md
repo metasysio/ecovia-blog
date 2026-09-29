@@ -98,3 +98,5 @@ principal — ele é um site separado.
 Qualquer merge na branch principal deste repositório dispara um novo build no
 Netlify automaticamente. Não há passo manual: quem tem acesso de push ao
 repositório consegue publicar sozinho.
+
+<!-- deploy-test: MET-12, 2026-09-29 -->
