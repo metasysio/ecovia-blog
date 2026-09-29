@@ -15,6 +15,7 @@ function layout({
   canonical,
   bodyHtml,
   cssHref,
+  jsHref,
   homeHref,
   ogImage,
 }) {
@@ -35,6 +36,7 @@ ${ogImage ? `<meta property="og:image" content="${escapeHtml(ogImage)}">\n` : ''
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${escapeHtml(cssHref)}">
+<script src="${escapeHtml(jsHref)}" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -48,6 +50,7 @@ ${bodyHtml}
 </main>
 <footer class="site-footer">
   <p>Ecovia — software de gestão de caçambas com IA para locadoras.</p>
+  <p><a href="https://ecovia.ai/cookies" data-cookie-prefs>Preferências de cookies</a></p>
 </footer>
 </body>
 </html>

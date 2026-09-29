@@ -95,12 +95,13 @@ function build() {
 }
 
 function writeSitemap(posts) {
-  const urls = [
-    `${config.siteUrl}/`,
-    ...posts.map((p) => `${config.siteUrl}/${p.slug}/`),
+  const today = new Date().toISOString().slice(0, 10);
+  const entries = [
+    { loc: `${config.siteUrl}/`, lastmod: posts[0] ? posts[0].date : today },
+    ...posts.map((p) => ({ loc: `${config.siteUrl}/${p.slug}/`, lastmod: p.date })),
   ];
-  const body = urls
-    .map((u) => `  <url>\n    <loc>${u}</loc>\n  </url>`)
+  const body = entries
+    .map((e) => `  <url>\n    <loc>${e.loc}</loc>\n    <lastmod>${e.lastmod}</lastmod>\n  </url>`)
     .join('\n');
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
   fs.writeFileSync(path.join(OUTPUT_DIR, 'sitemap.xml'), xml);

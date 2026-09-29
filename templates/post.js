@@ -19,6 +19,7 @@ ${contentHtml}
     canonical: `${config.siteUrl}/${post.slug}/`,
     bodyHtml,
     cssHref: '../css/style.css',
+    jsHref: '../js/consent-1.js',
     homeHref: '../',
   });
 }

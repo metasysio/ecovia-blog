@@ -53,6 +53,27 @@ site.config.js        -> nome do site, descrição, URL de produção
 dist/                 -> saída do build (não versionado; é o que o Netlify publica)
 ```
 
+## SEO e medição
+
+- Cada página (home e posts) sai do build com `<title>`, `<meta description>`,
+  `<link rel="canonical">` e Open Graph próprios — ver `templates/layout.js`.
+  Nenhuma página tem `noindex`.
+- `sitemap.xml` e `robots.txt` são gerados a cada build (`build.js`) e ficam
+  em `https://ecovia.ai/blog/sitemap.xml` e `https://ecovia.ai/blog/robots.txt`.
+  Atenção: crawlers só leem `robots.txt` na raiz do domínio
+  (`https://ecovia.ai/robots.txt`, do site principal) — o sitemap do blog
+  precisa ser referenciado lá também ou submetido manualmente no Search
+  Console.
+- Tráfego: `public/js/consent-1.js` reaproveita a mesma propriedade GA4
+  (`G-751FZNQ2FK`) e o mesmo banner de consentimento LGPD já usados em
+  `ecovia.ai` — zero custo, zero conta nova. Como o blog é servido no mesmo
+  domínio (via rewrite do Netlify), o consentimento dado no site principal
+  vale aqui também. Sem aceite, nenhuma request vai ao Google.
+- Verificação de propriedade no Google Search Console depende de acesso à
+  conta Google que já verificou `ecovia.ai` (propriedade de domínio via TXT,
+  ver [MET-7](/MET/issues/MET-7)) — não é algo que este repositório resolve
+  sozinho.
+
 ## URLs (definidas antes do primeiro post, não mudam depois)
 
 - Home do blog: `https://ecovia.ai/blog/`

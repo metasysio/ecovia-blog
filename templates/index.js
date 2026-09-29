@@ -39,6 +39,7 @@ ${items || '  <p>Ainda não há posts publicados.</p>'}
     canonical: `${config.siteUrl}/`,
     bodyHtml,
     cssHref: 'css/style.css',
+    jsHref: 'js/consent-1.js',
     homeHref: './',
   });
 }
